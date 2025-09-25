@@ -1,1 +1,1 @@
-web: gunicorn mvp.wsgi:application --log-file -
+web: gunicorn SmaartSahaProject.wsgi:application --log-file -
