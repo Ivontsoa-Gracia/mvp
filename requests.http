@@ -1,0 +1,320 @@
+### Créer un parcel
+POST http://localhost:8000/api/parcels/
+Accept: application/json
+Content-Type: application/json
+
+{
+  "owner":"6707a04b-3641-4245-a26b-9d001bafc29f" ,
+  "parcel_name": "Champ test",
+  "parcel_points": [
+    {"latitude": -18.879, "longitude": 47.507, "order": 1},
+    {"latitude": -18.880, "longitude": 47.508, "order": 2},
+    {"latitude": -18.881, "longitude": 47.507, "order": 3}
+  ]
+}
+
+### 1. Récupérer tous les utilisateurs
+GET http://127.0.0.1:8000/api/users/
+Content-Type: application/json
+
+
+### 2. Créer un nouvel utilisateur
+POST http://127.0.0.1:8000/api/users/
+Content-Type: application/json
+
+{
+  "username": "jean",
+  "email": "jean@example.com",
+  "first_name": "jean",
+  "last_name": "De Dieu",
+  "password": "test1234"
+}
+
+
+### 3. Récupérer un utilisateur par UUID
+GET http://127.0.0.1:8000/api/users/{{uuid}}
+Content-Type: application/json
+
+
+### 4. Mettre à jour un utilisateur (remplace {{uuid}})
+PUT http://127.0.0.1:8000/api/users/6707a04b-3641-4245-a26b-9d001bafc29f/
+Content-Type: application/json
+
+{
+  "username": "jeanDeDieu",
+  "email": "jean@example.com",
+  "first_name": "jean",
+  "last_name": "De Dieu",
+  "password":"test1234"
+}
+
+
+### 5. Supprimer un utilisateur (remplace {{uuid}})
+DELETE http://127.0.0.1:8000/api/users/{{uuid}}/
+
+### 6. Sign up
+POST http://localhost:8000/api/signup/
+Content-Type: application/json
+
+{
+  "username": "hugues",
+  "email": "hugueszeus@gmail.com",
+  "first_name": "hugues",
+  "last_name": "test",
+  "password": "test1234"
+}
+
+### 7. login
+POST http://localhost:8000/api/login/
+Content-Type: application/json
+
+{
+  "username": "jeanDeDieu",
+  "password": "test1234"
+}
+
+
+### Forgot password
+POST http://localhost:8000/api/forgot-password/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "hugueszeus@gmail.com"
+}
+
+### Reset password
+POST http://localhost:8000/api/reset-password/NjgxZGU0ZTktNjY3ZC00YmVlLThjYTItZTkwYTFiODVlMGNm/cvjx7m-6fb13c825439a204eae011cfeebc3ce7/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "token": "cvjx7m-6fb13c825439a204eae011cfeebc3ce7",
+  "new_password": "monNouveauMdp123"
+}
+
+
+### Requête HTTP pour SoilGrids
+GET https://rest.soilgrids.org/query?lon=47.507&lat=-18.879
+Accept: application/json
+
+### Requête HTTP pour OpenWeatherMap
+GET https://api.openweathermap.org/data/2.5/weather?lat=-18.879&lon=47.507&appid=TON_API_KEY&units=metric
+Accept: application/json
+
+
+### Requête HTTP pour Creer culture
+POST http://localhost:8000/api/crops/
+Content-Type: application/json
+
+{
+  "name": "Champ de riz",
+  "variety_id": 1
+}
+
+
+### Requête HTTP pour lister culture
+GET http://localhost:8000/api/crops/
+
+### Requête HTTP pour Supprimer culture
+
+DELETE http://localhost:8000/api/crops/<uuid>/
+
+### Requête HTTP pour creer status Culture
+
+POST http://localhost:8000/api/status-crops/
+Content-Type: application/json
+
+{
+  "name": "Planted",
+  "description": "Les cultures viennent d'être plantées"
+}
+
+### Requête HTTP pour creer varietes Culture
+
+POST http://localhost:8000/api/varieties/
+Content-Type: application/json
+
+{
+  "name": "Maïs hybride",
+  "description": "Variété résistante à la sécheresse"
+}
+
+### Requête HTTP pour lier parcelles et Cultures
+
+POST http://localhost:8000/api/parcel-crops/
+Content-Type: application/json
+
+{
+  "parcel": "37b485ea-9368-47fe-9f0a-80857eac12a6",
+  "crop_id": 1,
+  "planting_date": "2025-01-15",
+  "harvest_date": "2025-06-15",
+  "area": 3.5,
+  "status_id": 1
+}
+
+### Requête HTTP pour creer une taches
+
+POST http://localhost:8000/api/tasks/
+Content-Type: application/json
+
+{
+  "name": "Engrais champ A",
+  "description": "Mettre de l'engrais dans  le champ de riz",
+  "crop": 1,
+  "due_date": "2025-09-11",
+  "priority": 2,
+  "status": 1
+}
+### LIST TASKS
+GET http://localhost:8000/api/tasks
+Authorization: Token 347be5de5501e526e9a14a279e18462463ee066c
+Accept: application/json
+
+### 2. CREATE TASK
+POST http://localhost:8000/api/tasks/
+Authorization: Token 347be5de5501e526e9a14a279e18462463ee066c
+Content-Type: application/json
+
+{
+  "name": "task du champ 1",
+  "description": "task le champ de maïs",
+  "crop": 1,
+  "due_date": "2025-09-04",
+  "priority": 1,
+  "status": 1
+}
+
+
+### 3. GET SINGLE TASK
+GET http://localhost:8000/api/tasks/1/
+Authorization: Token 347be5de5501e526e9a14a279e18462463ee066c
+
+
+### 4. UPDATE TASK
+PUT http://localhost:8000/api/tasks/1/
+Authorization: Token 347be5de5501e526e9a14a279e18462463ee066c
+Content-Type: application/json
+
+{
+  "name": "Arrosage champ 1 modifié",
+  "description": "Changer la description",
+  "due_date": "2025-09-06",
+  "priority": 2,
+  "status": 2
+}
+
+
+### 5. DELETE TASK
+DELETE http://localhost:8000/api/tasks/1/
+Authorization: Token 347be5de5501e526e9a14a279e18462463ee066c
+
+
+### 6. MARK TASK AS DONE
+POST http://localhost:8000/api/tasks/1/mark_done/
+Authorization: Token 347be5de5501e526e9a14a279e18462463ee066c
+
+
+### 7. UPCOMING TASKS
+GET http://localhost:8000/api/tasks/upcoming/
+Authorization: Token 347be5de5501e526e9a14a279e18462463ee066c
+
+
+### 8. DASHBOARD SUMMARY
+GET http://localhost:8000/api/tasks/dashboard/
+Authorization: Token 347be5de5501e526e9a14a279e18462463ee066c
+
+
+### 9. LIST PRIORITIES
+GET http://localhost:8000/api/task-priority/
+Authorization: Token 347be5de5501e526e9a14a279e18462463ee066c
+
+
+### 10. LIST STATUS
+GET http://localhost:8000/api/task-status/
+Authorization: Token 347be5de5501e526e9a14a279e18462463ee066c
+
+
+
+### Base URL et Auth
+@baseUrl = http://localhost:8000/api
+@authHeader = Authorization: Token 347be5de5501e526e9a14a279e18462463ee066c
+
+### 1. LIST YIELD RECORDS
+GET {{baseUrl}}/yield-records/
+
+{{authHeader}}
+
+### 2. CREATE YIELD RECORD
+POST {{baseUrl}}/yield-records/
+
+{{authHeader}}
+Content-Type: application/json
+
+{
+  "parcelCrop": 1,
+  "date": "2025-09-08",
+  "yield_amount": 1200.5,
+  "area": 1.5,
+  "notes": "Première récolte de maïs"
+}
+
+### 3. GET SINGLE YIELD RECORD
+GET {{baseUrl}}/yield-records/1/
+
+{{authHeader}}
+
+### 4. UPDATE YIELD RECORD
+PUT {{baseUrl}}/yield-records/1/
+
+{{authHeader}}
+Content-Type: application/json
+
+{
+  "parcelCrop": 1,
+  "date": "2025-09-04",
+  "yield_amount": 1300.0,
+  "area": 1.5,
+  "notes": "Récolte mise à jour"
+}
+
+### 5. PATCH (UPDATE PARTIEL) YIELD RECORD
+PATCH {{baseUrl}}/yield-records/1/
+
+{{authHeader}}
+Content-Type: application/json
+
+{
+  "notes": "Correction mineure sur les notes"
+}
+
+### 6. DELETE YIELD RECORD
+DELETE {{baseUrl}}/yield-records/1/
+
+{{authHeader}}
+
+
+### Requête NASA POWER - Données météorologiques quotidiennes
+GET https://power.larc.nasa.gov/api/temporal/daily/point?parameters=T2M,T2M_MAX,T2M_MIN,PRECTOTCORR,EVLAND,GWETPROF&community=RE&longitude=47.5&latitude=-18.9&start=20250101&end=20250107&format=JSON
+Accept: application/json
+
+
+### Requête SoilGrids - Données du sol
+GET https://rest.isric.org/soilgrids/v2.0/properties/query?lon=47.5&lat=-18.9&property=phh2o&property=soc&property=nitrogen&property=sand&property=clay&property=silt&depth=0-5cm&value=mean
+Accept: application/json
+
+### Fire detector
+GET https://firms.modaps.eosdis.nasa.gov/api/area/csv?lat1=-25.0&lon1=45.0&lat2=-24.5&lon2=46.0&begin=2025-09-01&end=2025-09-09&key=VOTRE_CLE_API
+Accept: text/csv
+
+### Fire detector
+GET https://firms.modaps.eosdis.nasa.gov/data/csv/MODIS_C6_1_Global_24h.csv
+Accept: text/csv
+
+
+### Télécharger le CSV FIRMS 24h global
+GET https://firms.modaps.eosdis.nasa.gov/data/csv/MODIS_C6_1_Global_24h.csv
+Accept: text/csv
+
+
