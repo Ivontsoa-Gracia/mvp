@@ -16,6 +16,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 import dj_database_url
+import os
+
+DATABASES = {
+    "default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))
+}
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -105,10 +111,6 @@ WSGI_APPLICATION = 'SmaartSahaProject.wsgi.application'
 #         'PORT': '5432',
 #     }
 # }
-
-DATABASES = {
-    "default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))
-}
 
 
 # Password validation
