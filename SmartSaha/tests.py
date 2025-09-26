@@ -29,10 +29,10 @@
 # from SmartSaha.services import DeepSeekClient
 
 # SmartSaha/views_test.py
-from django.http import JsonResponse
-import os
+# from django.http import JsonResponse
+# import os
 
-def test_env(request):
-    return JsonResponse({
-        "OPENROUTER_API_KEY": os.getenv("OPENROUTER_API_KEY")
-    })
+# def test_env(request):
+#     return JsonResponse({
+#         "OPENROUTER_API_KEY": os.getenv("OPENROUTER_API_KEY")
+#     })

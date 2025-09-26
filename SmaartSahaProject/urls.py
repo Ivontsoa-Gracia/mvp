@@ -17,12 +17,12 @@ from SmartSaha.views import (
 from SmartSaha.views.users import ForgotPasswordView, ResetPasswordView
 from django.contrib.auth import views as auth_views
 
-from django.urls import path
-from .tests import test_env  # ou views si tu l'as mis dedans
+# from django.urls import path
+# from .tests import test_env  # ou views si tu l'as mis dedans
 
-urlpatterns = [
-    path('test-env/', test_env, name='test_env'),
-]
+# urlpatterns = [
+#     path('test-env/', test_env, name='test_env'),
+# ]
 
 # Swagger schema
 schema_view = get_schema_view(
