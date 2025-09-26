@@ -22,6 +22,9 @@ DATABASES = {
     "default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))
 }
 
+import os
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,8 +47,9 @@ env = environ.Env(
     DEBUG=(bool, False)
 )
 # Application definition
-environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
-OPENROUTER_API_KEY = env("OPENROUTER_API_KEY")
+# environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
+# OPENROUTER_API_KEY = env("OPENROUTER_API_KEY")
+
 
 INSTALLED_APPS = [
     'django.contrib.admin',
