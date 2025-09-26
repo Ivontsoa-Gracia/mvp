@@ -23,11 +23,19 @@ DATABASES = {
 }
 
 import os
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# ... reste du settings ...
+
+# API Key OpenRouter
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
+# Vérification pour debug (à enlever en prod)
+if not OPENROUTER_API_KEY:
+    print("⚠️ OPENROUTER_API_KEY n'est pas défini !")
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
