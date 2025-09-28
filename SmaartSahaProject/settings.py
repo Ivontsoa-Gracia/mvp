@@ -197,4 +197,4 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 # OU pour tout autoriser (pas recommandé en prod)
-CORS_ALLOW_ALL_ORIGINS = True
+# CORS_ALLOW_ALL_ORIGINS = True
