@@ -30,11 +30,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ... reste du settings ...
 
 # API Key OpenRouter
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+OPENROUTER_API_KEY = "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"
 
-# Vérification pour debug (à enlever en prod)
-if not OPENROUTER_API_KEY:
-    print("⚠️ OPENROUTER_API_KEY n'est pas défini !")
+# OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+
+# # Vérification pour debug (à enlever en prod)
+# if not OPENROUTER_API_KEY:
+#     print("⚠️ OPENROUTER_API_KEY n'est pas défini !")
 
 
 
