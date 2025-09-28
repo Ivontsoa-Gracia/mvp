@@ -76,8 +76,8 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'corsheaders.middleware.CorsMiddleware',  # doit être juste après SecurityMiddleware
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # optionnel, si tu l’utilises pour static files
+    'corsheaders.middleware.CorsMiddleware',  
+    'whitenoise.middleware.WhiteNoiseMiddleware',  
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -192,9 +192,9 @@ DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://precision-agriculture-virid.vercel.app/",
-    "https://app.smart-saha.com/",
+    "https://precision-agriculture-virid.vercel.app",
+    "https://app.smart-saha.com",
 ]
 
 # OU pour tout autoriser (pas recommandé en prod)
-# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
