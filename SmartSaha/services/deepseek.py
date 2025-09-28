@@ -27,6 +27,7 @@ class DeepSeekClient:
         print(context_data)
         full_prompt = f"{BASE_PROMPT}\n\nDonnées locales:\n{context_data}\n\nQuestion: {question}\nRéponse:"
         print(full_prompt)
+        print("OPENROUTER_API_KEY =", self.api_key)
 
         headers = {
             "Authorization": f"Bearer {self.api_key}",
